@@ -1,0 +1,22 @@
+{
+  "name": "sweet-js-brunch",
+  "version": "0.0.0",
+  "description": "Adds Sweet.js support to brunch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/e-jigsaw/sweet-js-brunch"
+  },
+  "keywords": [
+    "sweet.js",
+    "brunch"
+  ],
+  "author": "jigsaw (http://jgs.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/e-jigsaw/sweet-js-brunch/issues"
+  }
+}
