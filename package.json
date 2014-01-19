@@ -18,5 +18,8 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/e-jigsaw/sweet-js-brunch/issues"
+  },
+  "dependencies": {
+    "sweet.js": "~0.4.1"
   }
 }
