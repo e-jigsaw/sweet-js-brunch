@@ -4,7 +4,7 @@
   "description": "Adds Sweet.js support to brunch",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/coffee-script/bin/cake test"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,10 @@
   },
   "dependencies": {
     "sweet.js": "~0.4.1"
+  },
+  "devDependencies": {
+    "chai": "~1.8.1",
+    "mocha": "~1.17.0",
+    "coffee-script": "~1.6.3"
   }
 }
