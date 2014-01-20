@@ -1,5 +1,5 @@
 {expect} = require 'chai'
-Plugin = require '../'
+Plugin = require '../src/'
 {readFile} = require './helper'
 
 describe 'Plugin', ->
