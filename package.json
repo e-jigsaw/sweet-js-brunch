@@ -1,6 +1,6 @@
 {
   "name": "sweet-js-brunch",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Adds Sweet.js support to brunch",
   "main": "index.js",
   "scripts": {
