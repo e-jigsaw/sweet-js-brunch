@@ -1,5 +1,4 @@
 sjs = require 'sweet.js'
-util = require 'util'
 
 class SweetJSCompiler
   brunchPlugin: yes
@@ -8,6 +7,8 @@ class SweetJSCompiler
 
   constructor: (cfg)->
     @options = cfg.plugins?.sweet ? {}
+    if @options.modules?
+      @options.modules = @options.modules.map (file)-> sjs.loadNodeModule __dirname, file
     null
 
   compile: (data, path, callback) ->
