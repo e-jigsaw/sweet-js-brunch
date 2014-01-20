@@ -36,3 +36,12 @@ exports.config =
     sweet:
       modules: ['./lib/awesome.js']
 ```
+
+### `readableNames`
+
+```coffee
+exports.config =
+  plugins:
+    sweet:
+      readableNames: yes #=> boolean
+```
