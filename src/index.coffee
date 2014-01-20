@@ -1,18 +1,26 @@
 sjs = require 'sweet.js'
+util = require 'util'
 
 class SweetJSCompiler
   brunchPlugin: yes
   type: 'javascript'
-  extension: 'sjs'
+  extension: 'js'
 
-  constructor: (cfg)-> null
+  constructor: (cfg)->
+    @options = cfg.plugins?.sweet ? {}
+    null
 
   compile: (data, path, callback) ->
     try
-      result = sjs.compile data
+      @options.filename = path if @options.sourceMap?
+      sweetResult = sjs.compile data, @options
     catch err
-      error = err
-    finally
-      callback error, result.code
+      callback err
+
+    result =
+      data: sweetResult.code
+      map: sweetResult.sourceMap
+
+    callback null, result
 
 module.exports = SweetJSCompiler
