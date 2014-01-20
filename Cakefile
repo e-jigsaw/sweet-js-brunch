@@ -11,7 +11,7 @@ spawnRunner = (cmd, args, cb)->
       process.exit code
 
 build = (cb)-> spawnRunner './node_modules/coffee-script/bin/coffee', ['-o', '.', '-bc', 'src/index.coffee'], cb
-test = -> build -> spawnRunner('./node_modules/mocha/bin/mocha', ['--compilers', 'coffee:coffee-script', 'test/index.coffee'])
+test = -> build -> spawnRunner('./node_modules/mocha/bin/mocha', ['test/index.coffee'])
 
 task 'build', 'build javascript file', -> build()
 
