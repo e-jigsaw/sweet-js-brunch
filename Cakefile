@@ -17,4 +17,4 @@ task 'build', 'build javascript file', -> build()
 
 task 'test', 'test plugin', -> test()
 
-task 'coveralls', 'cover all !!', -> exec './node_modules/coffee-script/bin/mocha -R mocha-lcov-reporter | coveralls'
+task 'coveralls', 'cover all !!', -> exec './node_modules/mocha/bin/mocha -R mocha-lcov-reporter | coveralls'
