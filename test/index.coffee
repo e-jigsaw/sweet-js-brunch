@@ -40,6 +40,13 @@ describe 'Module', ->
     plugin = new Plugin
       plugins:
         sweet:
-          module: ['lambda-chop/macros']
+          modules: ['./test/fixtures/macro.sjs']
 
-  it 'should be able to set source map options', -> expect(plugin.options.module).to.be.instanceof(Array)
+  it 'should be able to set module options', -> expect(plugin.options.modules).to.be.instanceof(Array)
+  it 'should compile valid result with module options', (done)->
+    src = readFile 'fixtures/module.sjs'
+    validResult = readFile 'fixtures/sample.js'
+
+    plugin.compile src, 'module.sjs', (err, result)->
+      expect(result.data).to.equal(validResult)
+      done()
