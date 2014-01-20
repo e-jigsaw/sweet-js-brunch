@@ -12,7 +12,7 @@ spawnRunner = (cmd, args, cb)->
 
 build = (cb)-> spawnRunner './node_modules/coffee-script/bin/coffee', ['-o', '.', '-bc', 'src/index.coffee'], cb
 test = -> build -> spawnRunner('./node_modules/mocha/bin/mocha', ['test/index.coffee'])
-coveralls = -> spawnRunner './node_modules/coffee-script/bin/coffee', ['-R', 'mocha-lcov-reporter', '|', 'coveralls']
+coveralls = -> spawnRunner './node_modules/coffee-script/bin/mocha', ['-R', 'mocha-lcov-reporter', '|', 'coveralls']
 
 task 'build', 'build javascript file', -> build()
 
