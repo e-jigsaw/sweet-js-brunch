@@ -3,6 +3,7 @@ sjs = require 'sweet.js'
 class SweetJSCompiler
   brunchPlugin: yes
   type: 'javascript'
+  extension: 'sjs'
 
   constructor: (cfg)-> null
 
