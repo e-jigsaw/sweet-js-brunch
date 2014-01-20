@@ -1,4 +1,4 @@
-{spawn} = require 'child_process'
+{spawn, exec} = require 'child_process'
 
 spawnRunner = (cmd, args, cb)->
   subproc = spawn cmd, args
@@ -12,10 +12,9 @@ spawnRunner = (cmd, args, cb)->
 
 build = (cb)-> spawnRunner './node_modules/coffee-script/bin/coffee', ['-o', '.', '-bc', 'src/index.coffee'], cb
 test = -> build -> spawnRunner('./node_modules/mocha/bin/mocha', ['test/index.coffee'])
-coveralls = -> spawnRunner './node_modules/coffee-script/bin/mocha', ['-R', 'mocha-lcov-reporter', '|', 'coveralls']
 
 task 'build', 'build javascript file', -> build()
 
 task 'test', 'test plugin', -> test()
 
-task 'coveralls', 'cover all !!', -> coveralls()
+task 'coveralls', 'cover all !!', -> exec './node_modules/coffee-script/bin/mocha -R mocha-lcov-reporter | coveralls'
