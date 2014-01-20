@@ -19,11 +19,20 @@ Install the plugin via npm with `npm install --save sweet-js-brunch`.
 
 ## Configuration
 
-You can set the `sourceMap` option in your brunch config file.
+### `sourceMap`
 
 ```coffee
 exports.config =
   plugins:
     sweet:
-      sourceMap: yes
+      sourceMap: yes #=> boolean
+```
+
+### `modules`
+
+```coffee
+exports.config =
+  plugins:
+    sweet:
+      modules: ['./lib/awesome.js']
 ```
