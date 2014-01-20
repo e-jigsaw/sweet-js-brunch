@@ -1,10 +1,18 @@
 {spawn} = require 'child_process'
 
-task 'build', 'build javascript file', ->
-  spawn './node_modules/coffee-script/bin/coffee', ['-o', '.', '-bc', 'src/index.coffee'],
-    stdio: 'inherit'
+spawnRunner = (cmd, args, cb)->
+  subproc = spawn cmd, args
+  subproc.stderr.on 'data', (data)-> process.stderr.write data.toString()
+  subproc.stdout.on 'data', (data)-> process.stdout.write data.toString()
+  subproc.on 'exit', (code)->
+    if cb?
+      cb()
+    else
+      process.exit code
 
-task 'test', 'test plugin', ->
-  invoke 'build'
-  spawn './node_modules/mocha/bin/mocha', ['--compilers', 'coffee:coffee-script', 'test/index.coffee'],
-    stdio: 'inherit'
+build = (cb)-> spawnRunner './node_modules/coffee-script/bin/coffee', ['-o', '.', '-bc', 'src/index.coffee'], cb
+test = -> build -> spawnRunner('./node_modules/mocha/bin/mocha', ['--compilers', 'coffee:coffee-script', 'test/index.coffee'])
+
+task 'build', 'build javascript file', -> build()
+
+task 'test', 'test plugin', -> test()
