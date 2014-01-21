@@ -25,6 +25,16 @@
   "devDependencies": {
     "chai": "~1.8.1",
     "mocha": "~1.17.0",
-    "coffee-script": "~1.6.3"
+    "coffee-script": "~1.6.3",
+    "blanket": "~1.1.6",
+    "mocha-lcov-reporter": "0.0.1",
+    "coveralls": "~2.6.1"
+  },
+  "config": {
+    "blanket": {
+      "pattern": "sweet-js-brunch/src",
+      "loader": "./node-loaders/coffee-script",
+      "data-cover-never": "node_modules"
+    }
   }
 }

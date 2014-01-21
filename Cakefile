@@ -1,4 +1,4 @@
-{spawn} = require 'child_process'
+{spawn, exec} = require 'child_process'
 
 spawnRunner = (cmd, args, cb)->
   subproc = spawn cmd, args
@@ -16,3 +16,5 @@ test = -> build -> spawnRunner('./node_modules/mocha/bin/mocha', ['test/index.co
 task 'build', 'build javascript file', -> build()
 
 task 'test', 'test plugin', -> test()
+
+task 'coveralls', 'cover all !!', -> exec './node_modules/mocha/bin/mocha --reporter mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js'
